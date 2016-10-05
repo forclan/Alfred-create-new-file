@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>new files</string>
+	<key>connections</key>
+	<dict>
+		<key>89D34E8D-71A9-4CF1-92A9-D3CAE5BDED3D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A60CD988-8CA5-40C7-BFBD-0D76EB3FF7D3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A60CD988-8CA5-40C7-BFBD-0D76EB3FF7D3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6C9C2AC4-1C66-4CB3-A770-877CF362D53B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>forclan</string>
+	<key>description</key>
+	<string>create new files</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>new</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Create file in</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>6C9C2AC4-1C66-4CB3-A770-877CF362D53B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>new</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>create a new file</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>89D34E8D-71A9-4CF1-92A9-D3CAE5BDED3D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+  try
+  	tell application "Finder"
+  		set query to (the target of the front window) as alias
+  		set query to POSIX path of query
+         --return query
+  	end tell
+  end try
+  --set query to POSIX path of (path to desktop)
+  set touchFile to query &amp; q
+  set touchLog to do shell script "touch " &amp; touchFile
+  --log touchLog
+  if length of touchLog &gt; 0 then
+	--display dialog touchFile
+	return touchLog
+  else 
+	return touchFile
+  end if
+
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>A60CD988-8CA5-40C7-BFBD-0D76EB3FF7D3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>6C9C2AC4-1C66-4CB3-A770-877CF362D53B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<integer>130</integer>
+		</dict>
+		<key>89D34E8D-71A9-4CF1-92A9-D3CAE5BDED3D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>110</integer>
+			<key>ypos</key>
+			<integer>250</integer>
+		</dict>
+		<key>A60CD988-8CA5-40C7-BFBD-0D76EB3FF7D3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>370</integer>
+			<key>ypos</key>
+			<integer>260</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>forclan.github.io</string>
+</dict>
+</plist>
